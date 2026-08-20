@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#062f27">
+<title>Basra Arena</title>
+<style>
+:root{
+ --bg:#071613;--panel:#10231f;--panel2:#15302a;--text:#f4f7f5;--muted:#aabbb5;
+ --primary:#36c59a;--gold:#f4b63f;--red:#ff5d61;--blue:#65a8ff;--line:#24463e;
+ --shadow:0 18px 50px #0008;--radius:22px
+}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif}
+body{overflow-x:hidden}
+button,input,select{font:inherit}button{cursor:pointer}
+.app{width:min(720px,100%);margin:auto;padding:14px 14px 100px;position:relative;z-index:1}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.logo{display:flex;align-items:center;gap:10px}.mascotMini{font-size:34px;filter:drop-shadow(0 6px 12px #0008)}
+.brand{font-weight:950;font-size:24px;letter-spacing:-.5px}.brand small{display:block;font-size:11px;color:var(--muted);font-weight:600;letter-spacing:0}
+.iconBtn{width:44px;height:44px;border-radius:15px;border:1px solid var(--line);background:#10231f;color:var(--text)}
+.hero{position:relative;overflow:hidden;border-radius:28px;padding:20px;margin-bottom:14px;background:
+ radial-gradient(circle at 85% 20%,#36c59a2b,transparent 32%),linear-gradient(145deg,#143b32,#0b1e1a 65%);
+border:1px solid #2d5a4e;box-shadow:var(--shadow)}
+.hero .copy{max-width:62%}.eyebrow{color:var(--primary);font-size:12px;font-weight:900;text-transform:uppercase}.hero h1{font-size:30px;line-height:1.1;margin:7px 0}.hero p{color:var(--muted);font-size:13px;margin:0}
+.mascot{position:absolute;left:10px;bottom:-12px;width:170px;height:170px;display:grid;place-items:center;font-size:105px;filter:drop-shadow(0 20px 18px #0009);animation:float 3.4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px) rotate(2deg)}}@keyframes pop{0%{transform:scale(.8);opacity:0}70%{transform:scale(1.04)}100%{transform:scale(1);opacity:1}}
+.screen{animation:pop .28s ease}
+.sectionTitle{display:flex;justify-content:space-between;align-items:end;margin:18px 2px 10px}.sectionTitle h2{font-size:18px;margin:0}.sectionTitle span{font-size:12px;color:var(--muted)}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.mode{min-height:145px;text-align:right;padding:15px;border-radius:22px;color:var(--text);border:1px solid var(--line);position:relative;overflow:hidden;transition:.2s;box-shadow:0 8px 24px #0003}
+.mode:active{transform:scale(.97)}.mode .emoji{font-size:34px}.mode b{display:block;font-size:17px;margin-top:8px}.mode small{color:#d0dbd7;font-size:11px;line-height:1.5}.mode .tag{position:absolute;top:11px;left:11px;font-size:9px;padding:5px 7px;border-radius:999px;background:#0004}
+.classic{background:linear-gradient(145deg,#123c31,#0b211c)}.chaos{background:linear-gradient(145deg,#4b1c25,#24121b)}.cards{background:linear-gradient(145deg,#25205c,#15182f)}.lucky{background:linear-gradient(145deg,#60430d,#281d08)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:15px;margin:12px 0;box-shadow:0 10px 28px #0003}
+.row{display:flex;gap:9px}.row>*{flex:1}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+input,select{width:100%;padding:12px;border-radius:14px;border:1px solid var(--line);background:#091a16;color:var(--text);outline:none}
+.primary,.secondary,.danger{border:0;border-radius:15px;padding:13px;font-weight:850}.primary{background:var(--primary);color:#06261e}.secondary{background:#1a332d;color:var(--text)}.danger{background:#4b1d22;color:#ffb7b8}.wide{width:100%}
+.small{font-size:12px;color:var(--muted)}.title{font-weight:900;font-size:18px;margin-bottom:10px}
+.players{display:grid;gap:10px}.player{background:#0c1e1a;border:1px solid var(--line);border-radius:20px;padding:13px;position:relative;overflow:hidden}
+.player.leader{border-color:#4a806e}.player.dangerP{border-color:#9d4144;background:#24171a}
+.phead{display:flex;justify-content:space-between;align-items:center}.name{font-weight:900}.score{font-size:30px;font-weight:950;color:var(--primary)}.stars{margin-top:3px;letter-spacing:2px;color:#53655f}.stars .on{color:var(--gold)}
+.actions{display:flex;gap:7px;margin-top:10px}.actions button{flex:1;padding:10px;border-radius:12px;background:#17332b;color:var(--text);font-weight:800}
+.roundList{display:grid;gap:8px}.round{background:#0b1b18;border:1px solid #1c3932;border-radius:15px;padding:10px}.roundHead{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}.pill{padding:5px 8px;background:#142b25;border-radius:10px;font-size:11px}
+.modeBanner{border-radius:20px;padding:13px;margin-bottom:12px;border:1px solid var(--line);display:flex;align-items:center;gap:10px}.modeBanner .big{font-size:30px}.modeBanner b{display:block}.modeBanner span{font-size:11px;color:var(--muted)}
+.event{margin:10px 0;padding:15px;border-radius:18px;text-align:center;background:#152e28;border:1px dashed #3c6e61}.event .eventIcon{font-size:34px}.event b{display:block;margin:4px 0}.event strong{font-size:25px;color:var(--gold)}
+.cardHand{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.playCard{min-height:120px;border:1px solid #4e5f9a;background:linear-gradient(150deg,#272866,#15183c);border-radius:18px;padding:12px;text-align:right;color:#fff}.playCard b{display:block;margin:8px 0}.playCard small{color:#c9c9e8}.used{opacity:.35;filter:grayscale(1)}
+.modal{position:fixed;inset:0;background:#0009;display:flex;align-items:flex-end;justify-content:center;padding:10px;z-index:20}.sheet{width:min(720px,100%);max-height:90vh;overflow:auto;background:#0d211c;border:1px solid var(--line);border-radius:26px;padding:17px;box-shadow:var(--shadow);animation:sheet .25s ease}
+@keyframes sheet{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+.hidden{display:none!important}.center{text-align:center}.bigResult{font-size:46px;font-weight:1000}.winner{font-size:20px;color:var(--gold);font-weight:950;margin:8px 0}
+.toast{position:fixed;top:15px;left:50%;transform:translateX(-50%);z-index:30;background:#f3f7f5;color:#071613;padding:11px 15px;border-radius:14px;font-weight:800;font-size:12px;box-shadow:var(--shadow)}
+.nav{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);width:min(690px,calc(100% - 20px));display:flex;gap:6px;padding:7px;background:#0d211ceb;border:1px solid var(--line);backdrop-filter:blur(16px);border-radius:20px;z-index:15}.nav button{flex:1;background:transparent;color:var(--muted);border-radius:14px;padding:10px 5px;font-size:11px}.nav button.active{background:#1d4037;color:#fff}
+.achievement{display:flex;gap:10px;align-items:center;padding:11px;background:#0b1b18;border-radius:15px;margin:7px 0}.achievement .aicon{font-size:25px}
+@media(max-width:430px){.hero .copy{max-width:67%}.mascot{font-size:85px;width:135px}.mode{min-height:138px}.hero h1{font-size:26px}}
+</style>
+</head>
+<body>
+<div id="app"></div><div id="modal" class="modal hidden"></div><div id="toast" class="toast hidden"></div>
+<script>
+const KEY="basra_arena_full_v1";
+const DEFAULT={screen:"home",players:[],rounds:[],mode:"classic",settings:{maxStars:3},history:[],stats:{wins:{},games:0,bestStreak:0,streak:0}};
+let S=load(); let theme="dark";
+const MODES={
+ classic:{name:"Classic",ar:"البصرة الكلاسيكية",icon:"♠️",desc:"اللعب الأصلي بدون فوضى.",cls:"classic",mascot:"🃏"},
+ chaos:{name:"Chaos",ar:"الفوضى",icon:"💀",desc:"قانون مفاجئ في كل جولة.",cls:"chaos",mascot:"😈"},
+ cards:{name:"Cards",ar:"الكروت",icon:"🃏",desc:"كروت خاصة تغيّر مجرى المباراة.",cls:"cards",mascot:"🪄"},
+ lucky:{name:"Lucky",ar:"الحظ",icon:"🎲",desc:"مضاعف عشوائي لكل جولة.",cls:"lucky",mascot:"🎲"}
+};
+function load(){try{return {...DEFAULT,...JSON.parse(localStorage.getItem(KEY))}}catch{return structuredClone(DEFAULT)}}
+function save(){localStorage.setItem(KEY,JSON.stringify(S))}
+function esc(x){return String(x).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function mode(){return MODES[S.mode]}
+function stars(n){return Array.from({length:S.settings.maxStars},(_,i)=>`<span class="${i<n?"on":""}">★</span>`).join("")}
+function toast(t){let e=document.getElementById("toast");e.textContent=t;e.classList.remove("hidden");setTimeout(()=>e.classList.add("hidden"),1700)}
+function modal(c){document.getElementById("modal").innerHTML=`<div class="sheet">${c}</div>`;document.getElementById("modal").classList.remove("hidden")}
+function closeModal(){document.getElementById("modal").classList.add("hidden")}
+document.getElementById("modal").onclick=e=>{if(e.target.id==="modal")closeModal()}
+function nav(){
+return `<div class="nav"><button data-s="home" onclick="go('home')">🏠<br>الرئيسية</button><button data-s="game" onclick="go('game')">🎮<br>المباراة</button><button data-s="history" onclick="go('history')">📜<br>السجل</button><button data-s="stats" onclick="go('stats')">🏆<br>الإحصائيات</button></div>`
+}
+function render(){
+let app=document.getElementById("app");
+app.innerHTML=`<div class="top"><div class="logo"><span class="mascotMini">${mode().mascot}</span><div class="brand">Basra Arena<small>حاسبة + أوضاع لعب</small></div></div><button class="iconBtn" onclick="settings()">⚙️</button></div><div class="screen">${S.screen==="home"?home():S.screen==="game"?game():S.screen==="history"?history():stats()}</div>${nav()}`;
+document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.s===S.screen));
+}
+function home(){
+return `<div class="hero"><div class="copy"><div class="eyebrow">YOUR TABLE. YOUR RULES.</div><h1>البصرة، بس مو مملة.</h1><p>اختار الوضع، جهّز أصحابك، وخلي الـMascot يتكفل بالجو 😭🔥</p></div><div class="mascot">${mode().mascot}</div></div>
+<div class="sectionTitle"><h2>اختار الوضع</h2><span>4 أوضاع</span></div>
+<div class="modes">${Object.entries(MODES).map(([k,m])=>`<button class="mode ${m.cls}" onclick="chooseMode('${k}')"><span class="emoji">${m.icon}</span><span class="tag">${k==="classic"?"الأصلي":"ARCADE"}</span><b>${m.ar}</b><small>${m.desc}</small></button>`).join("")}</div>
+<div class="card"><div class="title">🎯 آخر مباراة</div>${S.history.length?`<div>${esc(S.history[0].summary)}</div><div class="small">${esc(S.history[0].date)}</div><button class="primary wide" style="margin-top:10px" onclick="loadHistory(0)">عرض آخر مباراة</button>`:`<div class="small">ابدأ أول مباراة لك.</div>`}</div>`;
+}
+function chooseMode(k){S.mode=k;save();newGame()}
+function newGame(){modal(`<h2>👥 تجهيز المباراة</h2><div class="small">اختار عدد اللاعبين وأسماءهم. تقدر تعدل الأسماء لاحقًا.</div><div class="grid2" style="margin:12px 0">${[2,3,4].map(n=>`<button class="secondary" onclick="setupPlayers(${n})">${n} لاعبين</button>`).join("")}</div>`)}
+function setupPlayers(n){
+S.players=Array.from({length:n},(_,i)=>({id:i+1,name:"لاعب "+(i+1),score:0,stars:0,deck:makeDeck()}));S.rounds=[];closeModal();
+modal(`<h2>${mode().icon} ${mode().ar}</h2>${S.players.map((p,i)=>`<label class="small">اللاعب ${i+1}</label><input id="name${i}" value="${esc(p.name)}" maxlength="18" style="margin:5px 0 9px">`).join("")}<button class="primary wide" onclick="startGame()">ابدأ المباراة 🔥</button>`)
+}
+function makeDeck(){return["🛡️ الدرع","💰 السرقة","✖️ المضاعف","💣 القنبلة","🔄 العكس","⭐ تجميد النجمة"].map((name,i)=>({name,id:i,used:false}))}
+function startGame(){S.players.forEach((p,i)=>p.name=document.getElementById("name"+i).value.trim()||"لاعب "+(i+1));S.screen="game";save();closeModal();render();toast(`${mode().ar} بدأت!`)}
+function banner(){let m=mode();return `<div class="modeBanner"><div class="big">${m.icon}</div><div><b>${m.ar}</b><span>${m.desc}</span></div></div>`}
+function game(){
+if(!S.players.length)return `<div class="card center"><h2>ما في مباراة 😭</h2><button class="primary" onclick="go('home')">اختار وضع</button></div>`;
+let sorted=[...S.players].sort((a,b)=>b.score-a.score);
+return `${banner()}<div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><div><div class="title">النتيجة</div><div class="small">${S.rounds.length} جولة · ${mode().ar}</div></div><div>${mode().mascot}</div></div>
+${currentEvent()}</div>
+<div class="players">${sorted.map((p,i)=>`<div class="player ${i===0?"leader":""} ${p.stars>=S.settings.maxStars?"dangerP":""}">
+<div class="phead"><div><div class="name">${i===0?"🏆 ":""}${esc(p.name)}</div><div class="stars">${stars(p.stars)}</div></div><div class="score">${p.score}</div></div>
+<div class="actions"><button onclick="quick('${p.id}',5)">+5</button><button onclick="quick('${p.id}',-5)">−5</button><button onclick="star('${p.id}')">⭐</button>${S.mode==="cards"?`<button onclick="cards('${p.id}')">🃏</button>`:""}</div>
+</div>`).join("")}</div>
+<div class="row" style="margin-top:10px"><button class="primary" onclick="roundModal()">＋ إضافة جولة</button><button class="secondary" onclick="undo()">↩️ تراجع</button></div>
+<div class="card"><div class="title">📜 سجل الجولات</div>${roundsHTML()}</div>`;
+}
+function currentEvent(){
+if(S.mode==="chaos"&&S.rounds.length)return `<div class="event"><div class="eventIcon">${S.rounds[S.rounds.length-1].event.icon}</div><b>${esc(S.rounds[S.rounds.length-1].event.name)}</b><span>${esc(S.rounds[S.rounds.length-1].event.desc)}</span></div>`;
+if(S.mode==="lucky"&&S.rounds.length)return `<div class="event"><div class="eventIcon">🎲</div><b>المضاعف الأخير</b><strong>×${S.rounds[S.rounds.length-1].mult}</strong></div>`;
+return "";
+}
+function roundsHTML(){if(!S.rounds.length)return `<div class="small">لسه ما سجلنا جولات.</div>`;return `<div class="roundList">${S.rounds.slice().reverse().map((r,idx)=>`<div class="round"><div class="roundHead"><span>الجولة ${S.rounds.length-idx}</span><span>${r.event?esc(r.event.name):r.mult?`×${r.mult}`:"Classic"}</span></div><div class="pills">${r.items.map(x=>`<span class="pill">${esc(x.name)}: <b>${x.delta>=0?"+":""}${x.delta}</b>${x.star?" ⭐":""}</span>`).join("")}</div></div>`).join("")}</div>`}
+function roundModal(){
+modal(`<h2>➕ جولة جديدة</h2><div class="small">أدخل نقاط الجولة. في Lucky سيُطبق المضاعف تلقائيًا، وفي Chaos سيظهر القانون بعد التسجيل.</div>${S.players.map((p,i)=>`<div style="display:flex;gap:7px;align-items:center;margin:9px 0"><b style="min-width:85px">${esc(p.name)}</b><input id="r${i}" type="number" value="0"><button class="secondary" onclick="addStarFromModal(${i})">⭐</button></div>`).join("")}<button class="primary wide" onclick="addRound()">تسجيل الجولة</button>`);
+window.pendingStars=[];
+}
+function addStarFromModal(i){if(!window.pendingStars)window.pendingStars=[];let j=window.pendingStars.indexOf(i);if(j>=0){window.pendingStars.splice(j,1);toast("النجمة أزيلت")}else{window.pendingStars.push(i);toast("⭐ النجمة مفعلة")}}
+const CHAOS=[
+["💰","سرقة","أعلى لاعب يسرق 10 نقاط من أقل لاعب."],
+["🔥","Double Down","نقاط هذه الجولة ×2."],
+["🔄","Reverse","النقاط تنقلب إشارتها بعد التسجيل."],
+["🎯","Target","لاعب عشوائي يحصل على +15."],
+["💣","Bomb","أكثر لاعب نقاطًا يخسر 15."],
+["⭐","نجمة ملعونة","أول نجمة في الجولة تضيف +5 نقاط بدلًا من خصم."]
+];
+function addRound(){
+let items=S.players.map((p,i)=>({name:p.name,delta:Number(document.getElementById("r"+i).value)||0,star:(window.pendingStars||[]).includes(i)}));
+let mult=S.mode==="lucky"?[0.5,1,1,2,2,3][Math.floor(Math.random()*6)]:1;
+if(mult!==1)items.forEach(x=>x.delta=Math.round(x.delta*mult));
+let event=null;
+if(S.mode==="chaos"){let c=CHAOS[Math.floor(Math.random()*CHAOS.length)];event={icon:c[0],name:c[1],desc:c[2]};applyChaos(items,c[1])}
+items.forEach((x,i)=>{S.players[i].score+=x.delta;if(x.star)S.players[i].stars=Math.min(S.settings.maxStars,S.players[i].stars+1)});
+S.rounds.push({items,mult,event});save();closeModal();render();toast(event?`${event[0]} ${event[1]}`:mult!==1?`🎲 ×${mult}`:"تم تسجيل الجولة");checkOver();
+}
+function applyChaos(items,name){
+if(name==="Double Down")items.forEach(x=>x.delta*=2);
+if(name==="Reverse")items.forEach(x=>x.delta*=-1);
+if(name==="Target"){let i=Math.floor(Math.random()*items.length);items[i].delta+=15}
+if(name==="Bomb"){let i=items.reduce((a,x,j)=>x.delta>items[a].delta?j:a,0);items[i].delta-=15}
+if(name==="سرقة"){let hi=items.reduce((a,x,j)=>x.delta>items[a].delta?j:a,0),lo=items.reduce((a,x,j)=>x.delta<items[a].delta?j:a,0);if(hi!==lo){items[hi].delta-=10;items[lo].delta+=10}}
+if(name==="نجمة ملعونة")items.forEach(x=>{if(x.star)x.delta+=5})
+}
+function quick(id,d){let p=S.players.find(x=>x.id==id);p.score+=d;S.rounds.push({items:S.players.map(x=>({name:x.name,delta:x.id==id?d:0,star:false})),mult:1,event:null});save();render();checkOver()}
+function star(id){let p=S.players.find(x=>x.id==id);if(p.stars<S.settings.maxStars)p.stars++;S.rounds.push({items:S.players.map(x=>({name:x.name,delta:0,star:x.id==id})),mult:1,event:null});save();render();checkOver()}
+function undo(){if(!S.rounds.length)return toast("ما في شيء نرجعه");let r=S.rounds.pop();r.items.forEach((x,i)=>{S.players[i].score-=x.delta;if(x.star)S.players[i].stars=Math.max(0,S.players[i].stars-1)});save();render();toast("رجعنا الجولة ↩️")}
+function checkOver(){let loser=S.players.find(p=>p.stars>=S.settings.maxStars);if(loser)setTimeout(()=>gameOver(loser),250)}
+function gameOver(loser){
+let sorted=[...S.players].sort((a,b)=>b.score-a.score);modal(`<div class="center"><div class="bigResult">GAME OVER 💀</div><div>${esc(loser.name)} وصل إلى ${S.settings.maxStars} نجوم.</div><div class="winner">🏆 ${esc(sorted[0].name)}</div><div class="card">${sorted.map(p=>`<div style="display:flex;justify-content:space-between;padding:9px;border-bottom:1px solid var(--line)"><b>${esc(p.name)}</b><span>${p.score} نقطة · ${p.stars} ⭐</span></div>`).join("")}</div><button class="primary wide" onclick="finish()">حفظ المباراة</button><button class="secondary wide" style="margin-top:8px" onclick="closeModal()">متابعة</button></div>`);
+}
+function finish(){
+let sorted=[...S.players].sort((a,b)=>b.score-a.score),win=sorted[0];
+S.stats.games++;S.stats.wins[win.name]=(S.stats.wins[win.name]||0)+1;S.stats.streak++;S.stats.bestStreak=Math.max(S.stats.bestStreak,S.stats.streak);
+S.history.unshift({date:new Date().toLocaleString("ar-LY"),summary:`${win.name} فاز في ${mode().ar}`,mode:S.mode,players:JSON.parse(JSON.stringify(S.players)),rounds:JSON.parse(JSON.stringify(S.rounds))});S.history=S.history.slice(0,30);
+S.players=[];S.rounds=[];S.screen="home";save();closeModal();render();
+}
+function cards(id){
+let p=S.players.find(x=>x.id==id);modal(`<h2>🃏 كروت ${esc(p.name)}</h2><div class="small">كل كرت يستخدم مرة واحدة في المباراة.</div><div class="cardHand" style="margin-top:12px">${p.deck.map(c=>`<button class="playCard ${c.used?"used":""}" ${c.used?"disabled":""} onclick="useCard('${id}',${c.id})"><span style="font-size:27px">${c.name.split(" ")[0]}</span><b>${esc(c.name.substring(3))}</b><small>${cardDesc(c.id)}</small></button>`).join("")}</div><button class="secondary wide" style="margin-top:10px" onclick="closeModal()">إغلاق</button>`)}
+function cardDesc(i){return["تحميك من أول خسارة 10 نقاط.","خذ 10 نقاط من لاعب تختاره.","ضاعف نقاط جولتك التالية.","أضف 15 نقطة مباشرة ثم استخدم الكرت.","اعكس نتيجة الجولة القادمة.","أول نجمة لك لا تُحسب."][i]}
+function useCard(id,cid){
+let p=S.players.find(x=>x.id==id);let c=p.deck.find(x=>x.id==cid);if(c.used)return;c.used=true;
+if(cid===0){p.shield=true;toast("🛡️ الدرع جاهز")}
+if(cid===1){let others=S.players.filter(x=>x.id!=id);let target=others.sort((a,b)=>a.score-b.score)[0];target.score-=10;p.score+=10;toast(`💰 ${p.name} سرق 10 نقاط`)}
+if(cid===2){p.doubleNext=true;toast("✖️ الجولة القادمة ×2")}
+if(cid===3){p.score+=15;toast("💣 +15")}
+if(cid===4){p.reverseNext=true;toast("🔄 الجولة القادمة معكوسة")}
+if(cid===5){p.freezeStar=true;toast("⭐ النجمة القادمة محمية")}
+save();closeModal();render()}
+function history(){
+return `<div class="card"><div class="title">📜 سجل المباريات</div>${S.history.length?S.history.map((h,i)=>`<div class="achievement"><div class="aicon">${MODES[h.mode]?.icon||"🎮"}</div><div style="flex:1"><b>${esc(h.summary)}</b><div class="small">${esc(h.date)} · ${h.rounds.length} جولات</div></div><button class="secondary" onclick="loadHistory(${i})">عرض</button></div>`).join(""):`<div class="small">السجل فاضي للحين.</div>`}</div>`}
+function loadHistory(i){let h=S.history[i];modal(`<h2>${MODES[h.mode]?.icon||"🎮"} تفاصيل المباراة</h2><div class="small">${esc(h.date)}</div><div class="card">${[...h.players].sort((a,b)=>b.score-a.score).map(p=>`<div style="display:flex;justify-content:space-between;padding:9px;border-bottom:1px solid var(--line)"><b>${esc(p.name)}</b><span>${p.score} · ${p.stars} ⭐</span></div>`).join("")}</div><button class="secondary wide" onclick="closeModal()">إغلاق</button>`)}
+function stats(){
+let entries=Object.entries(S.stats.wins).sort((a,b)=>b[1]-a[1]);
+return `<div class="card"><div class="title">🏆 الإحصائيات</div><div class="grid2"><div class="card" style="margin:0"><b>${S.stats.games}</b><div class="small">مباريات</div></div><div class="card" style="margin:0"><b>${S.stats.bestStreak}</b><div class="small">أفضل سلسلة</div></div></div><div style="margin-top:12px">${entries.length?entries.map((x,i)=>`<div class="achievement"><div class="aicon">${i===0?"👑":"🏅"}</div><div><b>${esc(x[0])}</b><div class="small">${x[1]} انتصار</div></div></div>`).join(""):`<div class="small">العب أول مباراة عشان تبدأ الإحصائيات.</div>`}</div></div>
+<div class="card"><div class="title">🎭 الشخصية</div><div class="center" style="font-size:80px">${mode().mascot}</div><div class="center small">الشخصية تتغير حسب الوضع.</div></div>`}
+function settings(){
+modal(`<h2>⚙️ إعدادات Arena</h2><label class="small">عدد النجوم للخسارة</label><select id="maxStars" style="margin:6px 0 12px"><option>3</option><option>4</option><option>5</option></select><div class="card"><b>💾 البيانات</b><div class="small">المباريات محفوظة محليًا على جهازك.</div></div><button class="primary wide" onclick="saveSettings()">حفظ</button><button class="danger wide" style="margin-top:8px" onclick="resetAll()">مسح كل البيانات</button>`);document.getElementById("maxStars").value=S.settings.maxStars}
+function saveSettings(){S.settings.maxStars=Number(document.getElementById("maxStars").value);save();closeModal();render();toast("تم الحفظ")}
+function resetAll(){if(confirm("مسح كل المباريات والإحصائيات؟")){localStorage.removeItem(KEY);S=load();closeModal();render();toast("تم المسح")}}
+function go(x){S.screen=x;save();render()}
+render();
+</script>
+</body>
+</html>
