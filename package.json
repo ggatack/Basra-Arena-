@@ -1,0 +1,14 @@
+{
+  "name": "basra-arena",
+  "version": "1.0.0",
+  "description": "Basra Arena mobile game",
+  "private": true,
+  "scripts": {
+    "build": "echo Build complete"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.0",
+    "@capacitor/core": "^7.4.0",
+    "@capacitor/cli": "^7.4.0"
+  }
+}
