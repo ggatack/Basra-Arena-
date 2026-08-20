@@ -1,0 +1,6 @@
+{
+  "appId": "com.basra.arena",
+  "appName": "Basra Arena",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}
